@@ -1,6 +1,7 @@
 from django.urls import resolve
 from django.test import TestCase
 from django.http import HttpRequest
+from django.template.loader import render_to_string
 
 from login.views import index
 
@@ -12,7 +13,5 @@ class HomePageTest(TestCase):
     def test_home_page_returns_correct_html(self):
         request = HttpRequest()
         response = index(request)
-        content = response.content.decode('utf-8').strip()
-        self.assertTrue(content.startswith('<html>'))
-        self.assertIn('<title>烂柯游艺社</title>', content)
-        self.assertTrue(content.endswith('</html>'))
+        expected_html = render_to_string('index.html')
+        self.assertEqual(response.content.decode(), expected_html)

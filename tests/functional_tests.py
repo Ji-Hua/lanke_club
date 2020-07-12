@@ -20,7 +20,7 @@ class NewVisitorTest(unittest.TestCase):
         # She noticed that this website has been named `烂柯游艺社`
         # in both title and header
         self.assertIn('烂柯游艺社', self.browser.title)
-        self.fail('Finish the test')
+        self.fail('Fail on purpose, should remove this when finished')
 
         # She want to login to the website but find she needs
         # to register first
